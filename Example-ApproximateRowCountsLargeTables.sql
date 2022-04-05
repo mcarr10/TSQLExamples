@@ -2,7 +2,7 @@
 
 SELECT SCHEMA_NAME(so.schema_id) AS SchemaName
 ,so.[name] AS TableName
-,ps.row_count AS RowCount
+,ps.row_count AS [RowCount]
 FROM sys.indexes AS si
 INNER JOIN sys.objects AS so ON si.object_id = so.object_id
 INNER JOIN sys.dm_db_partition_stats AS ps ON si.object_id = ps.object_id AND si.index_id = ps.index_id
