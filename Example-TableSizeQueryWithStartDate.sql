@@ -1,6 +1,6 @@
 /* This is an example query to return table sizes.  The where clause is to return only recently created tables.*/
 
-DECLARE @StartDate AS DATE = GETDATE()-2000
+DECLARE @StartDate AS DATE = DATEADD(YEAR,-1,GETDATE())
 SELECT
 t.create_date As CreateDate
 ,s.name As SchemaName
