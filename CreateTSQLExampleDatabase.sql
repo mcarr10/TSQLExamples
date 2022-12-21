@@ -7,6 +7,7 @@ IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'TSQLExample')
   BEGIN
     CREATE DATABASE [TSQLExample]
   END
+GO
 USE TSQLExample
 GO
 IF  NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TableA]') AND type in (N'U'))
@@ -50,7 +51,7 @@ BEGIN
 	INSERT [dbo].[TableC] ([Category], [Date], [TableCCount]) VALUES (N'GreenWidgetS', CAST(N'2022-01-12' AS Date), 20)
 END
 
-IF NOT EXISTS (SELECT 1 FROM [dbo].[DateExample])
+IF  NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DateExample]') AND type in (N'U'))
 BEGIN
 CREATE TABLE [dbo].[DateExample](
 	[DateExampleID] [int] IDENTITY(1,1) NOT NULL,
@@ -64,9 +65,9 @@ CREATE TABLE [dbo].[DateExample](
 ) ON [PRIMARY]
 END
 GO
+IF NOT EXISTS (SELECT 1 FROM [dbo].[DateExample])
+BEGIN
 SET IDENTITY_INSERT [dbo].[DateExample] ON 
-GO
 INSERT [dbo].[DateExample] ([DateExampleID], [DateExample], [DatetimeExample], [Datetime2Example]) VALUES (1, CAST(N'2022-12-01' AS Date), CAST(N'2022-12-20T12:05:06.130' AS DateTime), CAST(N'2022-12-20T12:05:51.4733333' AS DateTime2))
-GO
 SET IDENTITY_INSERT [dbo].[DateExample] OFF
-GO
+END
