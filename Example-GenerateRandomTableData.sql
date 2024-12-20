@@ -1,4 +1,9 @@
+/* This script generates random table data in a 4 column table  */
+
+DECLARE @rowcount INT = 1000;  --Enter the number of rows to insert into the table
 SET NOCOUNT ON;
+
+-- Drop and create the table
 DROP TABLE IF EXISTS dbo.TestTable;
 
 CREATE TABLE TestTable 
@@ -10,9 +15,8 @@ CREATE TABLE TestTable
 	Column4 DATE
 );
 
-
+-- Insert table data
 DECLARE @i INT = 1;
-
 WHILE @i <= 1000
 BEGIN
 INSERT TestTable (Column1, Column2, Column3, Column4) 
@@ -27,3 +31,7 @@ GETDATE()
 SET @i = @i + 1;
 END;
 
+-- SELECT TOP 100 * FROM dbo.TestTable
+
+--Clean up by dropping table
+--DROP TABLE IF EXISTS dbo.TestTable;
