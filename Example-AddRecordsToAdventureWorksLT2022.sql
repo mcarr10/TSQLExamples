@@ -1,5 +1,5 @@
 /* This script adds two new records to AdventureWorksLT2022 */
-USE [AdventureWorksLT2022_DEV]
+USE [AdventureWorksLT2022]
 
 
 -- Insert a new record into SalesOrderHeader
